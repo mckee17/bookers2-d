@@ -1,0 +1,18 @@
+Book detail
+
+<% @book.each do |book| %>
+<div>
+  <%= attachment_image_tag post_image, :image %>
+  <p>投稿ユーザー画像：<%= image_tag('sample-author1.jpg') %></p>
+  <p><%= book.title %></p>
+  <p><%= book.body %></p>
+</div>
+<% end %>
+
+  <% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book) %>
+  <% end %>  
+
+  <% if @book.user == current_user %>
+    <%= link_to "Edit", edit_book_path(@book), method: :delete %>
+  <% end %>

@@ -10,11 +10,32 @@
   </head>
 
   <body>
+
+        <%= link_to "Bookers", root_path %>
+
         <% if user_signed_in? %>
+      <li>
+        <%= link_to "Home", root_path %>
+        <!--users/id-->
+      </li>
+      <li>
+        <%= link_to "Users", root_path %>
+        <!--users-->
+      </li>
+      <li>
+        <%= link_to "Books", root_path %>
+        <!--books-->
+      </li>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
+      <li>
+        <%= link_to "Home", root_path %>
+      </li>
+      <li>
+        <%= link_to "About", about_path %>
+      </li>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
       </li>

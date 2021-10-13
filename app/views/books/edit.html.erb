@@ -1,1 +1,9 @@
-edit
+edit book
+<%= form_with model:@book, local:true do |f| %>
+  <label for="title">Title</label>
+  <%= f.text_field :title, autofocus: true %>
+  <label for="inputImage">Opinion</label>
+  <%= f.text_field :body, autofocus: true %>
+
+  <%= f.submit "Update" %>
+<% end %>

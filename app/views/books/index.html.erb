@@ -1,6 +1,6 @@
     image
     <% @books.each do |book| %>
-    <li><%= link_to book.title ,book_path(book.id) =%></li>
+    <li><%= link_to book.title ,book_path(book.id) %></li>
     <li><%= book.body =%></li>
     <% end %>
   </tb>

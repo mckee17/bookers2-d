@@ -1,0 +1,16 @@
+user info
+
+<%= link_to 'EDIT', edit_user_path(@user.id) %>
+
+
+Books
+
+<% @books.each do |book| %>
+<div>
+  <%= link_to user_path(@user.id) do %>
+    <%= attachment_image_tag @user,:profile_image %>
+  <% end %>
+  <p><%= book.title %></p>
+  <p><%= book.body %></p>
+</div>
+<% end %>

@@ -3,20 +3,12 @@
 
     <div class="col-md-3">
       
-      
-      
-      
-user info
-
-<%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size:"60x60" %>
-name<%= @user.name %>
-introductuon<%= @user.introduction %>
-<%= link_to 'EDIT', edit_user_path(@user.id) %>
+    <%= render 'users/info', userinfo: @userinfo %>
 
 
 new book
 
-<%= form_with model:@book, local:true do |f| %>
+<%= form_with model:@booknew, local:true do |f| %>
   <label for="title">Title</label>
   <%= f.text_field :title, autofocus: true %>
   <label for="Opinion">Opinion</label>
@@ -44,7 +36,7 @@ new book
             </tr>
           </thead>
           <tbody>
-          <% @users.each do |user| %>
+          <% @user.each do |user| %>
             <tr>
               <td><%= attachment_image_tag user,:profile_image, fallback: "no_image.jpg", size:"60x60" %></td>
               <td><%= user.name %></td>

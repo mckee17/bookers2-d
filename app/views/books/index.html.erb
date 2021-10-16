@@ -3,17 +3,9 @@
 
     <div class="col-md-3">
 
+    <%= render 'users/info', userinfo: @userinfo %>
 
-   user info
-
-<%= attachment_image_tag current_user, :profile_image, fallback: "no_image.jpg", size:"60x60" %>
-name<%= current_user.name %>
-introductuon<%= current_user.introduction %>
-<%= link_to 'EDIT', edit_user_path(current_user.id) %>
-
-
-
-      new book
+      <h2>new book</h2>
 <%= form_with model:@book, local:true do |f| %>
   <label for="title">Title</label>
   <%= f.text_field :title, autofocus: true %>
@@ -41,9 +33,9 @@ introductuon<%= current_user.introduction %>
           </thead>
           <tbody>
             <% @books.each do |book| %>
-            <% @users = book.user %>
+            <% @user = book.user %>
             <tr>
-              <td><%= link_to user_path(@users.id) do %>
+              <td><%= link_to user_path(@user.id) do %>
                   <%= attachment_image_tag @users,:profile_image, fallback: "no_image.jpg", size:"60x60" %>
                   <% end %></td>
               <td><%= link_to book.title,book_path(book.id) %></td>

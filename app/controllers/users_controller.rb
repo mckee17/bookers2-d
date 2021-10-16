@@ -26,13 +26,11 @@ class UsersController < ApplicationController
     end
   end
 
-    private
+
+ private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
-  end
-  def book_params
-    params.require(:book).permit(:title,:body)
   end
 
 end

@@ -17,8 +17,12 @@
 
 <div class="row">
   <% if userinfo.id == current_user.id %>
-    <%= link_to 'EDIT-image', edit_user_path(userinfo.id), class:"btn btn-outline-secondary btn-block" %>
+    <%= link_to edit_user_path(userinfo.id), class:"btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-cog"></i>
+    <% end %>
   <% else %>
-    <%= link_to 'EDIT-image', user_path(current_user.id), class:"btn btn-outline-secondary btn-block" %>
+    <%= link_to user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-cog"></i>
+    <% end %>
   <% end %>
 </div>

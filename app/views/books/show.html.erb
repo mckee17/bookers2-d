@@ -1,5 +1,5 @@
 <div class="container px-5 px-sm-0">
-  <div class="row">
+  <div class="row mt-3">
 
     <div class="col-md-3">
 
@@ -16,8 +16,9 @@
           <tbody>
             <tr>
               <td><%= link_to user_path(@user.id) do %>
-                  <%= attachment_image_tag @user,:profile_image, fallback: "no_image.jpg", size:"60x60" %>
-                  <% end %></td>
+                  <%= attachment_image_tag @user,:profile_image, fallback: "no_image.jpg", size:"40x40" %>
+                  <% end %>
+                    <br><%= link_to @user.name,user_path(@user.id) %></td>
               <td><%= link_to @book.title,book_path(@book.id) %></td>
               <td><%= @book.body %></td>
               <td><% if @book.user == current_user %>

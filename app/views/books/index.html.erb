@@ -5,19 +5,9 @@
 
     <%= render 'users/info', userinfo: @userinfo %>
 
-      <h2>new book</h2>
-<%= form_with model:@book, local:true do |f| %>
-  <label for="title">Title</label>
-  <%= f.text_field :title, autofocus: true %>
-  <label for="Opinion">Opinion</label>
-  <%= f.text_field :body, autofocus: true %>
+    <%= render 'books/new', booknew: @booknew %>
 
-  <%= f.submit "Create Book" %>
-<% end %>
-
-
-
-          </div>
+    </div>
 
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -36,7 +26,7 @@
             <% @user = book.user %>
             <tr>
               <td><%= link_to user_path(@user.id) do %>
-                  <%= attachment_image_tag @users,:profile_image, fallback: "no_image.jpg", size:"60x60" %>
+                  <%= attachment_image_tag @user,:profile_image, fallback: "no_image.jpg", size:"60x60" %>
                   <% end %></td>
               <td><%= link_to book.title,book_path(book.id) %></td>
               <td><%= book.body %></td>

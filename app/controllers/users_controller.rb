@@ -22,13 +22,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(@user.id)
   end
-  
-  def create
-    @booknew = Book.new(book_params)
-    @booknew.user_id = current_user.id
-    @booknew.save
-    redirect_to book_path(@booknew.id)
-  end
+
     private
 
   def user_params

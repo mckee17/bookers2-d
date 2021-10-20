@@ -4,16 +4,7 @@
 
     <h2>User info</h2>
 
-    <div class="errors_message">
-      <% if @user.errors.any? %>
-        <h3><%= @user.errors.count %> error prohibited this obj from being saved:</h3>
-        <% @user.errors.full_messages.each do |message| %>
-          <ul>
-            <li><%= message %></li>
-          </ul>
-        <% end %>
-      <% end %>
-    </div>
+    <%= render'layouts/errors', obj: @user %>
 
     <%= form_with model:@user, local:true do |f| %>
 

@@ -35,6 +35,31 @@
           </tbody>
         </table>
 
+        <div class="index_comment">
+          <table class="table">
+            <tbody>
+              <% @book.book_comments.each do |comment| %>
+              <tr>
+                <td><%= link_to user_path(comment.user) do %>
+                    <%= attachment_image_tag comment.user,:profile_image, fallback: "no_image.jpg", size:"40x40" %>
+                    <% end %>
+                      <br><%= link_to comment.user.name,user_path(comment.user) %></td>
+                <td><%= comment.comment %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+          <div class="post_comment">
+            <%= form_with(model:[@book,@book_comment],local: true) do |f| %>
+              <%= f.text_area :comment, rows:4 %>
+              <%= f.submit"送信" %>
+            <% end %>
+          </div>
+        </div>
+
     </div>
 
   </div>

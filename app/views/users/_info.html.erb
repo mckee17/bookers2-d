@@ -31,11 +31,16 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <% if userinfo != current_user %>
-      <%= link_to user_relationships_path(userinfo), method: :post, class:"btn btn-block btn-primary" do %>
-        フォロー<% end %>
+      <% if Relationship.exists?(follower_id: current_user.id, followed_id: userinfo.id) %>
+        <%= link_to user_relationship_path(userinfo,userinfo.follower), method: :delete, class:"btn btn-block btn-danger" do %>
+          解除<% end %>
+      <% else %>
+        <%= link_to user_relationships_path(userinfo), method: :post, class:"btn btn-block btn-primary" do %>
+          フォロー<% end %>
+      <% end %>
     <% else %>
       <%= link_to edit_user_path(userinfo.id), class:"btn btn-outline-secondary btn-block" do %>
-        <i class="fas fa-user-cog"></i><% end %>
+      <i class="fas fa-user-cog"></i><% end %>
     <% end %>
   </div>
 </div>

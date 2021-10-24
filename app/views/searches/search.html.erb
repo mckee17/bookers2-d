@@ -1,0 +1,46 @@
+<div class="container">
+
+<h2>Search for "<%= params[:search] %>"</h2>
+
+  <% if params[:search_select] == 'user' %>
+    <table class="table">
+      <thead>
+        <tr>
+          <td></td>
+          <td>Name</td>
+          <td>Introduction</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users_search.each do |user| %>
+          <tr>
+            <td><%= attachment_image_tag user,:profile_image, fallback: "no_image.jpg", size:"40x40" %></td>
+            <td><%= user.name %></td>
+            <td><%= user.introduction %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% elsif params[:search_select] == 'book' %>
+    <table class="table">
+      <thead>
+        <tr>
+          <td></td>
+          <td>Title</td>
+          <td>Opinion</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books_search.each do |book| %>
+          <tr>
+            <td><%= attachment_image_tag book.user,:profile_image, fallback: "no_image.jpg", size:"40x40" %></td>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+</div>

@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get 'home/about' => 'homes#about',as: 'about'
-  get '/users/:user_id/relationships/follow' => 'relationships#follow',as: 'follow_user'
-  get '/users/:user_id/relationships/follower' => 'relationships#follower',as: 'follower_user'
   get '/search' =>  'searches#search'
 
   resources :books, only:[:index,:show,:create,:edit,:update,:destroy] do
@@ -12,7 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only:[:index,:show,:edit,:update] do
-    resources :relationships,only:[:create,:destroy]
+    resource :relationships, only:[:create,:destroy] do
+      collection do
+        get :follow
+        get :follower
+      end
+    end
   end
-  
+
 end

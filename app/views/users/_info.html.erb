@@ -14,13 +14,13 @@
       </tr>
       <tr>
         <th>Follows</th>
-        <th><%= link_to follow_user_path(userinfo) do %>
+        <th><%= link_to follow_user_relationships_path(userinfo) do %>
               <%= userinfo.follower.count %>
             <% end %></th>
       </tr>
       <tr>
         <th>Followers</th>
-        <th><%= link_to follower_user_path(userinfo) do %>
+        <th><%= link_to follower_user_relationships_path(userinfo) do %>
               <%= userinfo.followed.count %>
             <% end %></th>
       </tr>
@@ -32,7 +32,7 @@
   <div class="col-md-10 col-md-offset-1">
     <% if userinfo != current_user %>
       <% if Relationship.exists?(follower_id: current_user.id, followed_id: userinfo.id) %>
-        <%= link_to user_relationship_path(userinfo,userinfo.follower), method: :delete, class:"btn btn-block btn-danger" do %>
+        <%= link_to user_relationships_path(userinfo), method: :delete, class:"btn btn-block btn-danger" do %>
           解除<% end %>
       <% else %>
         <%= link_to user_relationships_path(userinfo), method: :post, class:"btn btn-block btn-primary" do %>

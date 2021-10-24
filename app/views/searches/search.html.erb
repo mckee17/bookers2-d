@@ -1,8 +1,8 @@
 <div class="container">
 
-<h2>Search for "<%= params[:search] %>"</h2>
+<h2>Search for "<%= params[:search] %>" (<%= params[:search_match] %> match)</h2>
 
-  <% if params[:search_select] == 'user' %>
+  <% if params[:search_model] == 'user' %>
     <table class="table">
       <thead>
         <tr>
@@ -22,7 +22,7 @@
       </tbody>
     </table>
 
-  <% elsif params[:search_select] == 'book' %>
+  <% elsif params[:search_model] == 'book' %>
     <table class="table">
       <thead>
         <tr>

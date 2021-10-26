@@ -37,11 +37,11 @@
           </tbody>
         </table>
 
-        <div id="index_comment mt-4"><%= render'books/index_comment', book: @book %></div>
+        <div id="index_comment"><%= render'book_comments/index_comment', comments: @book.book_comments %></div>
 
         <div class="row">
           <div class="post_comment">
-            <%= form_with(model:[@book,@book_comment],local: true) do |f| %>
+            <%= form_with(model:[@book,@book_comment]) do |f| %>
               <%= f.text_area :comment, rows:4 %>
               <%= f.submit"送信" %>
             <% end %>

@@ -27,12 +27,13 @@
               <td id="favorite_btn_<%= @book.id %>"><%= render'favorites/favorites', book: @book %></td>
 
               <td id="comments_count">コメント数: <%= @book.book_comments.count %></td>
-              <td><% if @book.user == current_user %>
-                  <%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-sm btn-success" %>
-                  <% end %></td>
-              <td><% if @book.user == current_user %>
-                  <%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-sm btn-danger" %>
-                  <% end %></td>
+              <td id="star_<%= @book.id %>"></td>
+
+              <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@book.id), class:"btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-sm btn-danger" %></td>
+              <% end %>
+
             </tr>
           </tbody>
         </table>
@@ -52,3 +53,13 @@
 
   </div>
 </div>
+
+
+<script>
+  $("#star_<%= @book.id %>").raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    readOnly: true,
+    score: <%= @book.rate %>
+  });
+</script>

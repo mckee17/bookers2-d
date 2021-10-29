@@ -16,6 +16,8 @@
           <label for="inputImage">Opinion</label>
           <%= f.text_field :body, autofocus: true %>
         </div>
+        <div class="form-group" id="star_<%= @book.id %>"></div>
+
         <%= f.submit "Update Book",class:"btn btn-success"%>
 
       <% end %>
@@ -24,3 +26,13 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  $("#star_<%= @book.id %>").raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    readOnly: true,
+    score: <%= @book.rate %>
+  });
+</script>

@@ -8,10 +8,18 @@
       <label for="opinion">Opinion</label>
       <%= f.text_field :body, autofocus: true %>
     </div>
-    <div class="form-group">
-      <label for="rate"></label>
-      <%= f.text_field :body, autofocus: true %>
+    <div class="form-group" id="star_new">
+      <label for="rate">Rate</label>
     </div>
 
     <%= f.submit "Create Book", class:"btn btn-success" %>
 <% end %>
+
+
+<script>
+  $("#star_new").raty({
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn: '<%= asset_path('star-on.png') %>',
+    scoreName: 'book[rate]'
+  });
+</script>

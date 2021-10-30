@@ -5,6 +5,8 @@ class BooksController < ApplicationController
       @books = Book.sort_id
     elsif params[:sort_rate]
       @books = Book.sort_rate
+    elsif params[:category_search].present?
+      @books = Book.search_category(params[:category_search])
     else
       @books = Book.all
     end
@@ -58,7 +60,7 @@ class BooksController < ApplicationController
  private
 
   def book_params
-    params.require(:book).permit(:title,:body,:rate)
+    params.require(:book).permit(:title,:body,:rate,:category)
   end
 
 end

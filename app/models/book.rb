@@ -9,6 +9,7 @@ class Book < ApplicationRecord
 
    scope :sort_id, -> {order(id: :DESC)}
    scope :sort_rate, -> {order(rate: :DESC, user_id: :ASC)}
+   scope :search_category, -> category_search {where(category: category_search)}
 
    validates :title, presence: true
    validates :body, presence: true, length:{maximum: 200}

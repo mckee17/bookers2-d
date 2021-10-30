@@ -76,7 +76,7 @@
   <% if user_signed_in? %>
     <div class="container">
       <div class="row my-3">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-5 offset-md-4">
           <%= form_with url: '/search', method: :get, local: true do |f| %>
             <%= f.text_field :search %>
             <%= f.select :search_model, [ ['User','user'], ['Book','book'] ], {selected: 'user'} %>
@@ -84,16 +84,18 @@
             <%= f.submit '検索' %>
           <% end %>
         </div>
+        <div class="cal-md-3">
+          <%= form_with url: books_path, method: :get, local: true do |f| %>
+            <%= f.text_field :category_search, placeholder: "Category検索" %>
+            <%= f.submit '検索' %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
 
-
-
-
-
-
 </header>
+
 
 <% if flash[:notice] %>
   <p class="notice"><%= flash[:notice] %></p>
